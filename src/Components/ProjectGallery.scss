@@ -1,0 +1,63 @@
+#ProjectGallery{
+    background: #1a1a1a;
+    width: 100%;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    position: relative;
+
+    .project-wrapper{
+        max-width: 900px;
+        margin: auto;
+        padding-bottom: 150px;
+        
+        h3{
+            color: #fff;
+            max-width: 40%;
+            margin-left: auto;
+            font-size: 36px;
+            font-weight: 600;
+            line-height: 42px;
+            margin-bottom: 35px;
+        }
+    }
+
+    .container-img{
+        width: 80%;
+        margin: auto;
+    }
+
+    .project-main-wrapper{
+        padding-bottom: 150px;
+    }
+
+    .project-inner{
+
+        .inner-item{
+            width: 100%;
+            height: 700px;
+
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .odd{
+            padding-right: 30px;
+            margin-top: -150px;
+        }
+
+        .even{
+            padding-left: 30px;
+        }
+    }
+
+    .button-wrapper{
+        margin: auto;
+        width: 100%;
+
+        .dark-link__parent{
+            margin: auto;
+        }
+    }
+}

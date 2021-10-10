@@ -1,0 +1,44 @@
+.dark-link__parent{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    margin-bottom: 120px;
+    width: 200px;
+}
+
+.dash{
+    width: 50px;
+    height: 1px;
+    background: #f60;
+    font-size: 18px;
+    position: absolute;
+    transform: translate(0%, 50%);
+    top: 50%;
+    line-height: 1.5;
+    transition: all 0.2s;
+}
+
+.dark-link{
+    text-decoration: none;
+    color: #666;
+    font-size: 16px;
+    line-height: 2;
+    display: inline-flex;
+    padding-left: 70px;
+    transition: all 0.2s;
+    font-weight: 700;
+}
+
+.dark-link__parent:hover .dash{
+    width: 70px;
+    transition: all 0.2s;
+    background: #666;
+}
+
+.dark-link__parent:hover .dark-link{
+    padding-left: 90px;
+    transition: all 0.2s;
+    color: #f60;
+    font-weight: 700;
+}
