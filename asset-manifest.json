@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/hoksite/static/css/main.e977985d.chunk.css",
-    "main.js": "/hoksite/static/js/main.5388511e.chunk.js",
-    "main.js.map": "/hoksite/static/js/main.5388511e.chunk.js.map",
+    "main.js": "/hoksite/static/js/main.0fa8f01a.chunk.js",
+    "main.js.map": "/hoksite/static/js/main.0fa8f01a.chunk.js.map",
     "runtime-main.js": "/hoksite/static/js/runtime-main.3f602902.js",
     "runtime-main.js.map": "/hoksite/static/js/runtime-main.3f602902.js.map",
     "static/css/2.c1ce44cb.chunk.css": "/hoksite/static/css/2.c1ce44cb.chunk.css",
@@ -24,6 +24,6 @@
     "static/css/2.c1ce44cb.chunk.css",
     "static/js/2.0684ec36.chunk.js",
     "static/css/main.e977985d.chunk.css",
-    "static/js/main.5388511e.chunk.js"
+    "static/js/main.0fa8f01a.chunk.js"
   ]
 }
