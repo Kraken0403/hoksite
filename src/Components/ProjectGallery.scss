@@ -1,9 +1,33 @@
 #ProjectGallery{
-    background: #1a1a1a;
+    background: #101010;
     width: 100%;
-    padding-top: 150px;
-    padding-bottom: 150px;
+    padding-top: 230px;
+    padding-bottom: 230px;
     position: relative;
+    
+    .scroll_top{
+        top: 72px;
+    }
+
+    .scroll {
+        position: absolute;
+        left: 50%;
+        width: 1px;
+        height: 88px;
+        z-index: 1;
+        // overflow: hidden;
+    }
+
+    .scroll::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #e0e0e0;
+        top: 0%;
+        left: 0;
+        opacity: 0.3;
+    }
 
     .project-wrapper{
         max-width: 900px;
@@ -33,22 +57,29 @@
     .project-inner{
 
         .inner-item{
-            width: 100%;
+            width: 92.5%;
             height: 700px;
+            position: relative;
+            overflow: hidden;
 
             img{
-                width: 100%;
-                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 110%;
+                height: 110%;
+                scale: 1.5;
             }
         }
 
         .odd{
-            padding-right: 30px;
+            margin-right: auto;
             margin-top: -150px;
         }
 
         .even{
-            padding-left: 30px;
+            margin-left: auto;
+        
         }
     }
 

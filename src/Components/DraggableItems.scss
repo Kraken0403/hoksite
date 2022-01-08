@@ -1,7 +1,6 @@
 .items {
     height:600px;
     padding: 100px;
-    margin: 30px;
     width:100%!important;
     /*border:1px solid white;*/
     overflow-x: hidden;
@@ -62,6 +61,71 @@
   #draggable{
       width: 100%;
       overflow: hidden;
+      padding-top: 230px;
+      padding-bottom: 230px;
+      position: relative;
+
+      .bg-text{
+        position: absolute;
+        /* width: 100%; */
+        top: 20%;
+        transform: translate(-50%, -50%);
+        left: 55%;
+        z-index: 0;
+        line-height: 1;
+        font-size: 12.5vw;
+        font-weight: 600;
+        text-align: center;
+        letter-spacing: 9.4vw;
+        text-transform: uppercase;
+        color: #000000;
+        opacity: 0.02;
+        display: flex;
+        text-shadow: 9px 17px 25px rgba(0,0,0,0.12);
+        pointer-events: none;
+    }
+
+    .scroll_top{
+        top: 72px;
+    }
+
+    .scroll_bottom {
+        bottom: 72px;
+    }
+
+    .scroll {
+        position: absolute;
+        left: 50%;
+        width: 1px;
+        height: 88px;
+        z-index: 1;
+        // overflow: hidden;
+    }
+
+    .scroll::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #e0e0e0;
+        top: 0%;
+        left: 0;
+    }
+
+    .inner-card{
+      margin-bottom: 40px;
+    }
+
+    .inner-card__title{
+      margin: 0px!important;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .inner-card__content{
+      color: #666;
+      line-height: 26px;
+      font-weight: 300;
+    }
   }
 
   .about{
@@ -76,6 +140,59 @@
       margin-bottom: 25px;
   }
 
-  #draggable{
-      padding-top: 150px;
+  .about-content{
+    color: #666;
+    font-weight: 300;
+    margin-bottom: 50px;
   }
+  
+
+  // RESPONSIVE
+
+@media only screen and (max-width: 600px){
+  #draggable {
+    width: 100%;
+    overflow: hidden;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    position: relative;
+}
+
+#draggable .scroll{
+  display: none;
+}
+
+.about-head{
+  font-size: 28px;
+  line-height: 33px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.about-content{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.inner-card{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+}
+
+@media only screen and (min-width: 600px) and (max-width: 767px){
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+
+@media only screen and (min-width: 1200px) and (max-width: 1360px){
+
+}

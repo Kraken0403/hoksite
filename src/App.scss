@@ -1,3 +1,74 @@
+@font-face {
+    font-family: 'Circe';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Circe'), url('./fonts/CRC55.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Circe Extra Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Circe Extra Light'), url('./fonts/CRC25.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Circe Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Circe Light'), url('./fonts/CRC35.woff') format('woff');
+    }
+    
+
+    @font-face {
+    font-family: 'Circe Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Circe Bold'), url('./fonts/CRC65.woff') format('woff');
+    }
+
 body{
     background: #f7f7f7!important;
+    height: 100vh;
+    overflow-x: hidden!important;
+    font-family: 'Circe'!important;
+    position: relative;
+    width: 100%!important;
+}
+
+html{
+    overflow-x: hidden;
+}
+
+.scrollbar-track{
+    background: transparent!important;
+    padding-right: 5px!important;
+    padding-left: 5px!important;
+}
+
+.scrollbar-thumb{
+    background: #f60!important;
+    width: 4px!important;
+    left: -30%!important;
+}
+
+.scroll-content{
+    width: 100%;
+    .scroll{
+        width: 100%;
+    }
+    .App{
+        width: 100%;
+    }
+}
+
+.row{
+    margin-left: 0px!important;
+    margin-right: 0px!important;
+}
+
+a{
+    text-decoration: none!important;
 }

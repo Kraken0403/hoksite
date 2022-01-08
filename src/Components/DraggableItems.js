@@ -1,7 +1,38 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './DraggableItems.scss'
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import Scrollbar from 'smooth-scrollbar';
 
 function DraggableItems() {
+
+
+    function splitTextHome1(){
+        let titleText = document.querySelector('#draggable .line-1');
+        let text = titleText.textContent.split("");
+        let result = "";
+
+        text.forEach((t)=>{
+            result += "<span>" + t + "</span>";
+        })
+
+        titleText.innerHTML = result
+    }
+
+    
+    function splitTextHome2(){
+        let titleText = document.querySelector('#draggable .line-2');
+        let text = titleText.textContent.split("");
+        let result = "";
+
+        text.forEach((t)=>{
+            result += "<span>" + t + "</span>";
+        })
+
+        titleText.innerHTML = result
+    }
+
+    
 
     React.useEffect(()=>{
         const slider = document.querySelector('.items');
@@ -75,24 +106,129 @@ function DraggableItems() {
         });
     }, [])
         
-    
- 
+    gsap.registerPlugin(ScrollTrigger);
+
+    useEffect(()=>{
+
+        splitTextHome1()
+        splitTextHome2();
+
+        var tl3 = gsap.timeline({
+            scrollTrigger:{
+                trigger: "#draggable",
+                scroller: 'body',
+                start: 'top 400px',
+               
+            }
+        }).fromTo('#draggable .bg-text span', {
+            y: '100px',
+            opacity: 0,
+            stagger: 0.2,
+        }, {
+            y: '0px',
+            opacity: 1,
+            stagger: 0.2
+        }, 0).from('#draggable .line-1 span', {
+            y: '-100px',
+            opacity: 0,
+            stagger: 0.04,
+
+        }, "<0.2").from('#draggable .line-2 span', {
+            y: '-100px',
+            opacity: 0,
+            stagger: 0.04
+        }, "<0.2").from('#draggable .about-content', {
+            y: '30px',
+            stagger: 0.15,
+            opacity: 0,
+
+        }, "<0.3").from('#draggable .inner-card', {
+            y: '30px',
+            stagger: 0.1,
+            opacity: 0,
+
+        }, "<0.35").from('#draggable .item', {
+            opacity: 0,
+            stagger: 0.1
+        }, "<0.3");
+        
+
+    }, [] )
     
     return (
         
-        
         <div>
             <section id="draggable">
+                 <div className="scroll scroll_top about__scroll scroll_animated" data-animated-one=""></div>
                 <div className="container-fluid">
+                    <div className="bg-text">
+                        <span>F</span>
+                        <span>E</span>
+                        <span>A</span>
+                        <span>T</span>
+                    </div>
                     <div className="about">
                         <div className="row">
-                            <div className="col-12 col-md-7">
+                            <div className="col-12 col-md-6">
 
                             </div>
-                            <div className="col-12 col-md-5">
+                            <div className="col-12 col-md-6">
                                 <div className="about-main">
-                                    <h3 className="about-head">We Are Lorem Ipsum is simply dummy text of the printing</h3>
-                                    <p className="about-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                                    <h3 className="about-head">
+                                        <div className="line line-1">
+                                        {/* <span>W</span>
+                                        <span>e </span>
+                                        <span>a</span>
+                                        <span>r</span>
+                                        <span>e </span>
+                                        <span>L</span>
+                                        <span>o</span>
+                                        <span>r</span>
+                                        <span>e</span>
+                                        <span>m </span>
+                                        <span>I</span>
+                                        <span>p</span>
+                                        <span>s</span>
+                                        <span>u</span>
+                                        <span>m </span>
+                                        <span>I</span>
+                                        <span>t</span>
+                                        <span>s </span> */}
+                                        
+                                        Intelligent designs 
+                                    </div>
+
+                                    <div className="line line-2">
+                                        for every lifestyle
+                                    </div>
+                                        
+                                    </h3>
+                                    <p className="about-content">We have delivered high-end interiors for hospitality, office, retail and residential spaces from design to handover. We are a multi-cultural team of passionate individuals dedicated to delivering a unique concept with all our projects. This is always achieved through a tailored approach reflecting client's needs and aspirations.</p>
+                                    <div className="row">
+                                        <div className="col-6">     
+                                            <div className="inner-card">
+                                                <p className="inner-card__title">Projects Completed</p>
+                                                <p className="inner-card__content">1500 +</p>
+                                            </div>
+
+                                            <div className="inner-card">
+                                                <p className="inner-card__title">Happy Customers</p>
+                                                <p className="inner-card__content">4500 +</p>
+                                            </div>
+                                        </div>
+
+                                        <div className="col-6">
+                                            <div className="inner-card">
+                                                 <p className="inner-card__title">National Awards</p>
+                                                 <p className="inner-card__content">18</p>
+                                            </div>
+
+                                            <div className="inner-card">
+                                                <p className="inner-card__title">Client Satisfaction</p>
+                                                <p className="inner-card__content">100%</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -111,6 +247,8 @@ function DraggableItems() {
                         </div>
                     </div>
                 </div>
+
+                <div className="scroll scroll_bottom about__scroll scroll_animated" data-animated-one=""></div>
             </section>
             
         </div>

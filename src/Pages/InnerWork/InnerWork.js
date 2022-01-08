@@ -1,40 +1,201 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Header from '../../Components/Header'
 import SmallWrapper from '../../Components/SmallWrapper'
 import './InnerWork.scss'
 import sample from '../../images/sample-1.jpg'
-import sample2 from '../../images/sample-2.jpg'
-import sample3 from '../../images/sample-3.jpg'
 import $ from 'jquery';
 import Footer from '../../Components/Footer'
+import gsap from 'gsap';
 
-function InnerWork() {
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import Scrollbar from 'smooth-scrollbar';
+import ScrollProxy from '../../Components/ScrollProxy'
+import Gallery from '../../Components/Gallery'
 
-    React.useEffect(()=>{
-        $("#slider").on("input change", (e)=>{
+import { InnerWorkContent } from '../../Components/Data'
+
+export default class SingleProject extends Component{
+
+    splitText5(){
+        let titleText = document.querySelector('.line-14');
+        let text = titleText.textContent.split("");
+        let result = "";
+
+        text.forEach((t)=>{
+            result += "<span>" + t + "</span>";
+        })
+
+        titleText.innerHTML = result
+    }
+
+    splitText6(){
+        let titleText = document.querySelector('.line-15');
+        let text = titleText.textContent.split("");
+        let result = "";
+
+        text.forEach((t)=>{
+            result += "<span>" + t + "</span>";
+        })
+
+        titleText.innerHTML = result
+    }
+
+    moveDivisor() {
+        const divisor = document.querySelector("#divisor");
+        const handle = document.querySelector("#handle");
+        const slider = document.querySelector("#slider");
+        
+        handle.style.left = slider.value+"%";
+        divisor.style.width = slider.value+"%";
+    }
+    
+    componentDidMount(){
+
+        this.moveDivisor();
+        this.splitText5();
+        this.splitText6();
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        const options = {
+            damping: 0.07,
+        }
+
+        let bodyScrollBar = Scrollbar.init(document.body, options);
+
+            ScrollTrigger.scrollerProxy("body", {
+            scrollTop(value) {
+                if (arguments.length) {
+                bodyScrollBar.scrollTop = value;
+                }
+                return bodyScrollBar.scrollTop;
+            }
+            });
+
+        bodyScrollBar.addListener(ScrollTrigger.update);
+
+        var fixed = document.querySelector('.layer');
+        
+        bodyScrollBar.addListener(function(status) {
+        var offset = status.offset;
+
+        fixed.style.top = offset.y + 'px';
+        fixed.style.left = offset.x + 'px';
+    
+        })
+
+        var tlb1 = gsap.timeline({
+            scrollTrigger: {
+                scroller: 'body',
+                trigger: 'briefing-inner',
+                scrub: true
+            }
+        });
+
+        tlb1.from('.briefing-inner img', {
+            y: '-200px'
+        }).to('briefing-inner img', {
+            y: '200px'
+        });
+
+        var tlb3 = gsap.timeline({
+            scrollTrigger: {
+                scroller: 'body',
+                trigger: '.briefing',
+            }
+        });
+
+        tlb3.from('.briefing .brief-title .lines-1 span', {
+            opacity: 0,
+            stagger: 0.04
+        }, 0).from('.briefing .brief-title .lines-2 span', {
+            opacity: 0,
+            stagger: 0.04
+        }, 0).from('.briefing .brief-content', {
+            y: '50px',
+            opacity: 0
+        }, '<0.5')
+
+        var tl8 = gsap.timeline({
+            scrollTrigger:{
+              trigger: '.briefing-inner',
+              scrub: true,
+            }
+          });
+        
+          tl8.from('.briefing-inner img', {
+            yPercent: -20,
+            ease: 'ease'
+          }).to('.briefing-inner img', {
+            yPercent: 20,
+            ease: 'ease'
+          });
+
+          var tl19 = gsap.timeline({
+            scrollTrigger:{
+              trigger: '#hero-work',
+              
+            }
+          });
+        
+          tl19.from('#hero-work .hero-wrapper .line-14 span', {
+            
+            opacity: 0,
+            stagger: 0.04
+          }, 0).from('#hero-work .hero-wrapper .line-15 span', {
+            opacity: 0,
+            stagger: 0.04
+          }, 0);
+
+          $("#slider").on("input change", (e)=>{
             const sliderPos = e.target.value;
             // Update the width of the foreground image
             $('.foreground-img').css('width', `${sliderPos}%`)
             // Update the position of the slider button
             $('.slider-button').css('left', `calc(${sliderPos}% - 18px)`)
         });
-    })
-    return (
+
+    }
+
+    render() {
+        let getId = this.props.match.params.id;
+     
+        console.log(InnerWorkContent.mainData);
+
+        let getData = InnerWorkContent.mainData.find(function(e){
+     
+            if(e.id == getId){
+                return e
+            }
+
+            else return false
+          });
+
+       
+        return(
+
         <div id="inner-work1">
+            <ScrollProxy/>
             <Header color = "#fff"/>
             <div id='hero-work'>
             
-                <div className='layer-3 layer parallax' data-depth='0.50'></div>
+                <div className='layer-3 layer parallax' data-depth='0.50' style={{'left': '0px'}, {backgroundImage: `url(${getData.HeroBgurl})`}}></div>
             
                 <div className="hero-wrapper">
-                    <h1>Beyond the <br />universe</h1>
+                    <h1>
+                      <div className="line-14">
+                        {getData.HeroCaption1}
+                      </div>
+                      <div className="line-15">
+                        {getData.HeroCaption2}
+                      </div>
+                    </h1>
                     <span className="anime-line"></span>
                 </div>
-           
            </div>  
 
             <div className="inner-work__brief">
-                <SmallWrapper/>
+                <SmallWrapper para1 = {getData.AboutParaOne} para2 = {getData.AboutParaTwo} line1={getData.line1} line2={getData.line2}/>
             </div>
 
             <div className="main-briefing">
@@ -42,17 +203,44 @@ function InnerWork() {
                 ISCON
             </div> */}
             <div className="briefing-inner">
-                <img src={sample} alt="" />
+                <img src={getData.ParallaxImgBg} alt="" />
             </div>
 
-            <div className="container padding-briefing">
-                <div className="small-wrapper">
+            <div className="container-fluid padding-briefing">
+                <div className="small-wrapper briefing">
                     <div className="row">
                         <div className="col-12 col-md-6">
-                            <h3 className="brief-title">The Main <br />Content</h3>
+                            <h3 className="brief-title">
+                                <div className="lines lines-1">
+                                    <span>H</span>
+                                    <span>i</span>
+                                    <span>g</span>
+                                    <span>h</span>
+                                    <span>l</span>
+                                    <span>i</span>
+                                    <span>g</span>
+                                    <span>h</span>
+                                    <span>t</span>
+                                    <span>s </span>
+                                    <span>&</span>
+                                </div>
+
+                                <div className="lines lines-2">
+                                    <span>C</span>
+                                    <span>h</span>
+                                    <span>a</span>
+                                    <span>l</span>
+                                    <span>l</span>
+                                    <span>e</span>
+                                    <span>n</span>
+                                    <span>g</span>
+                                    <span>e</span>
+                                    <span>s</span>
+                                </div>
+                            </h3>
                         </div>
                         <div className="col-12 col-md-6">
-                            <p className="brief-content">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                            <p className="brief-content">{getData.ProjectDetails}</p>
                         </div>
                     </div>
                 </div>
@@ -63,68 +251,40 @@ function InnerWork() {
         {/* Blueprints */}
             
         <div className="blueprints-main">
-            <div className="container">
+            <div className="container-fluid">
                 <div className="blueprints">
-                    <div className='img background-img'></div>
-                    <div className='img foreground-img'></div>
-                    <input type="range" min="1" max="100" value="50" className="slider" name='slider' id="slider" />
-                    <div className='slider-button'></div>
+                    {/* <div className='img background-img' ></div>
+                    <div className='img foreground-img' ></div> */}
+                    <div id="comparison">
+                        <figure style={{backgroundImage: `url(${getData.ImgOneSlider})`}}>
+                        <div id="handle"></div>
+                        <div id="divisor" style={{backgroundImage: `url(${getData.ImgTwoSlider})`}}></div>
+                        </figure>
+                        <input type="range" min="0" max="100" value="50" id="slider" onInput={this.moveDivisor} />
+                    </div>
+                    
                 </div>
             </div>
          </div>
 
-         <section class="gallery">
-            <div class="container-fluid">
-                <div class="gallery-inner">
-                    <div class="gallery-head">
-                        <h1>JP ISCON</h1>
-                    </div>
+        <div className="inner-work_gallery-wrapper">
+            <Gallery url1={getData.ProjectImgOne}
+                        url2={getData.ProjectImgOne}
+                        url3={getData.ProjectImgOne}
+                        url4={getData.ProjectImgOne}
+                        url5={getData.ProjectImgOne}
+                        url6={getData.ProjectImgOne}
+                        url7={getData.ProjectImgOne}
 
-                    <div class="gallery-body">
-                        <div class="column-left">
-                            <div class="preview-img one-wrapper">
-                                <img class="one-img" src={sample2} alt="" />
-                            </div>
-
-                            <div class="preview-img two-wrapper">
-                                <img class="two-img" src={sample3} alt="" />
-                            </div>
-
-                            <div class="preview-img three-wrapper">
-                                <img class="three-img" src={sample2} alt="" />
-                            </div>
-
-                            <div class="preview-img four-wrapper">
-                                <img class="four-img" src={sample3} alt="" />
-                            </div>
-                        </div>
-
-                        <div class="column-right offset-md-2">
-                            <div class="preview-img five-wrapper">
-                                <img class="five-img" src={sample2} alt="" />
-                            </div>
-
-                            <div class="preview-img six-wrapper">
-                                <img class="six-img" src={sample2} alt="" />
-                            </div>
-
-                            <div class="preview-img seven-wrapper">
-                                <img class="seven-img" src={sample3} alt="" />
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-
+            />
+        </div>
+    
         <Footer/>
 
         </div>
+        );
+    }
 
-
-    )
 }
 
-export default InnerWork
+

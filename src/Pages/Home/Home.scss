@@ -1,0 +1,125 @@
+#home {
+    .forLogo{
+        g{
+            fill: #fff!important;
+        }
+    }
+
+    .hamburger-icon{
+        
+        svg{
+            cursor: pointer;
+            stroke: white;
+            fill: white;
+            stroke-width: 1px;
+        }
+    }
+}
+
+#loader{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    z-index: 1200;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.home-gallery{
+    background-color: #111111;  
+    position: relative;
+
+    .gallery{
+        background-color: #111111;
+    }
+
+    .home-gallery__title{
+        padding-top: 230px;
+        width: fit-content;
+        margin-left: auto;
+        h3{
+            color: #fff;
+            font-size: 36px;
+            font-weight: 600;
+            line-height: 42px;
+            
+            .line-3,.line-4{
+                height: 50px;
+                overflow: hidden;
+            }
+        }
+        // text-align: right;
+        
+    }
+
+    .scroll {
+        position: absolute;
+        left: 50%;
+        width: 1px;
+        height: 88px;
+        z-index: 1;
+        // overflow: hidden;
+    }
+
+    .scroll::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #e0e0e06b;
+        top: 88px;
+        left: 0;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .home-gallery .home-gallery__title{
+        padding-top: 60px;
+        margin-left: 20px;
+        margin-right: auto;
+
+        h3{
+            font-size: 28px;
+            line-height: 33px;
+            margin-left: 20px;
+        }
+
+        p{
+            margin-left: 20px;
+            font-size: 16px;
+            margin-right: 20px;
+        }
+    }
+
+    .home-gallery .scroll{
+        display: none;
+    }
+
+    .column-left{
+        width: 50%;
+    }
+
+    .col-12{
+        padding-left: 0px!important;
+        padding-right: 0px!important;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 767px){
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1360px){
+
+}

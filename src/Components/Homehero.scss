@@ -4,53 +4,86 @@
     overflow: hidden;
     position: relative;
 
-    .inner-hero{
+.inner-hero{
         position: relative;
-        
-        .hero-content{
-            padding-left: 90px;
-            padding-right: 90px;
-
-            h1{
-                position: absolute;
-                z-index: 1;
-                max-width: 400px;
-                transform: translateY(-50%);
-                top: 50%;
-                left: 15%;
-                font-size: 60px;
-                font-weight: 500;
-                line-height: 1.5;
-                color: #fff;
-            }
-        }
-
-        .hero-footer{
-            padding-right: 90px;
-            padding-left: 90px;
-            padding-bottom: 60px;
-            position: absolute;
-            transform: translateY(-50%);
-            width: 100%;
-            display: inline-block;
-
-            p{
-                margin-right: 45px;
-                display: inline-block;
-                color: white;
-            }
-        }
-    }
-
-    
-
-    .video-container{
+        overflow: hidden;
         width: 100%;
-        height: 100vh!important;
-        position: relative;
-    }
+        height: 100%;
+      
 
-    .video-container::after{
+        #carouselExampleCaptions{
+            height: 100%;
+
+            .carousel-inner{
+                height: 100%;
+            }
+
+            .carousel-indicators{
+                position: absolute;
+                right: 0;
+                left: auto;
+                bottom: 0;
+                margin-right: calc(81px + 0.75rem);
+
+                button{
+                    text-indent: 0px!important;
+                    display: flex;
+                    flex-direction: column;
+                    text-align: left;
+                    background-color: transparent;
+                    margin-left: 90px;
+                    span{
+                        font-size: 14px;
+                        font-weight: 300;
+                    }
+
+                    .car-dash{
+                        margin-top: 8px;
+                        width: 30px;
+                        background-color: #fff;
+                        height: 3px;
+                    }
+                }
+            }
+
+            .carousel-indicators [data-bs-target]{
+                text-indent: none;
+                width: auto;
+                height: auto;
+
+                
+                span{
+                    color: white;
+                }
+            }
+        }
+
+        .social-share{
+            position: absolute;
+            z-index: 5;
+            margin-left: calc(80px + 0.75rem);
+            bottom: 0;
+            left: 0;
+            margin-bottom: 3rem;
+
+            svg{
+                stroke: #fff;
+                fill: #fff;
+                margin-right: 30px;
+
+                path{
+                    stroke: #fff;
+                }
+            }
+        }
+    }
+}
+
+.carousel-fade .carousel-item{
+    width: 100%;
+    height: 100%;
+    
+    &::before{
         content: "";
         display: block;
         position: absolute;
@@ -58,6 +91,276 @@
         height: 100%;
         top: 0;
         left: 0;
-        background: url("../images/bg-mask.png") rgba(0,0,0,0.6);
+        background-color: rgba(0,0,0,0.6);
+    }
+}
+
+.first{
+    background: rgba(0, 0, 0, 0) url("https://yodezeen.com/wp-content/uploads/2020/03/1.jpg") no-repeat scroll center center / cover;
+}
+
+.second{
+    background: rgba(0, 0, 0, 0) url("https://yodezeen.com/wp-content/uploads/2020/04/1-1.jpg") no-repeat scroll center center / cover;
+}
+
+.third{
+    background: rgba(0, 0, 0, 0) url("../images/sample-1.jpg") no-repeat scroll center center / cover;
+}
+
+
+.carousel-caption{
+    left: 0%;
+    top: 30%;
+    width: 100%;
+    right: none;
+    text-align: left;
+    padding-left: 100px;
+   
+    .caption-inner{
+        position: relative;
+        display: flex;
+        
+        .number{
+            width: 100px;
+           
+            font-size: 36px;
+            font-weight: 400;
+            line-height: 42px;
+            text-align: center;
+            position: relative;
+
+            span{
+                font-size: 16px;
+                position: absolute;
+                top: -5%;
+                left: 1%;
+            }
+
+        }
+
+        
+    }
+
+
+    .caption-content{
+        margin-left: 150px;
+        .line{
+            h2{
+                font-size: 70px;
+                font-weight: 600;
+                line-height: 72px;  
+                position: relative;
+            }
+        }
+
+        .caption-link{
+            padding-top: 35px;
+            color: white;
+            font-size: 14px;
+        }
+    }
+}
+
+
+// RESPONSIVENESS
+
+@media only screen and (max-width: 600px) {
+    #hero .inner-hero #carouselExampleCaptions .carousel-indicators{
+        margin-right: 20px;
+        margin-left: 0px;
+    }
+
+    #hero .inner-hero #carouselExampleCaptions .carousel-indicators button{
+        margin-left: 0px;
+    }
+
+    .indi-content{
+        display: none;
+    }
+
+    #hero .inner-hero .social-share{
+        margin-left: 20px;
+        margin-bottom: 1.5rem;
+    }
+
+    .carousel-caption{
+        padding-left: 0px;
+    }
+
+    // .carousel-caption .caption-inner::before {
+    //     content: "01/" !important;
+    //     position: absolute;
+    //     left: 0%;
+    //     top: 0;
+    //     font-size: 16px;
+    //     display: none;
+    // }
+
+    .number{
+        display: none;
+    }
+
+    .carousel-caption .caption-content{
+        margin-left: 20px;
+    }
+
+    .carousel-caption .caption-content .line h2{
+        font-size: 36px;
+        line-height: 36px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+    #hero .inner-hero #carouselExampleCaptions .carousel-indicators{
+        position: absolute;
+        right: 0;
+        left: auto;
+        bottom: 0;
+        margin-right: calc(81px + 0.75rem);
+    }
+
+    #hero .inner-hero #carouselExampleCaptions .carousel-indicators button{
+        margin-left: 30px;
+    }
+
+    .indi-content{
+        display: block;
+    }
+
+    #hero .inner-hero .social-share{
+        margin-left: 20px;
+        margin-bottom: 1.5rem;
+    }
+
+    .carousel-caption{
+        padding-left: 0px;
+    }
+
+    // .carousel-caption .caption-inner::before {
+    //     content: "01/" !important;
+    //     position: absolute;
+    //     left: 0%;
+    //     top: 0;
+    //     font-size: 16px;
+    //     display: none;
+    // }
+
+    .number{
+        display: none;
+    }
+
+    .carousel-caption .caption-content{
+        margin-left: 20px;
+    }
+
+    .carousel-caption .caption-content .line h2{
+        font-size: 42px;
+        line-height: 42px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    #hero .inner-hero #carouselExampleCaptions .carousel-indicators{
+        position: absolute;
+        right: 0;
+        left: auto;
+        bottom: 0;
+        margin-right: calc(81px + 0.75rem);
+    }
+    #hero .inner-hero #carouselExampleCaptions .carousel-indicators button{
+        margin-left: 45px;
+    }
+
+    .indi-content{
+        display: block;
+    }
+
+    #hero .inner-hero .social-share{
+        margin-left: 20px;
+        margin-bottom: 1.5rem;
+    }
+
+    .carousel-caption{
+        padding-left: 0px;
+    }
+
+    // .carousel-caption .caption-inner::before {
+    //     content: "01/" !important;
+    //     position: absolute;
+    //     left: 0%;
+    //     top: 0;
+    //     font-size: 16px;
+    //     display: none;
+    // }
+
+    .number{
+        display: none;
+    }
+
+    .carousel-caption .caption-content{
+        margin-left: 20px;
+    }
+
+    .carousel-caption .caption-content .line h2{
+        font-size: 42px;
+        line-height: 42px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) and (max-width: 1360px) {
+    #hero .inner-hero #carouselExampleCaptions .carousel-indicators{
+        margin-right: calc(81px + 0.75rem);
+        margin-left: 0px;
+    }
+
+    #hero .inner-hero #carouselExampleCaptions .carousel-indicators button{
+        margin-left: 90px;
+    }
+
+    .indi-content{
+        display: block;
+    }
+
+    #hero .inner-hero .social-share{
+        position: absolute;
+        z-index: 5;
+        margin-left: calc(80px + 0.75rem);
+        bottom: 0;
+        left: 0;
+        margin-bottom: 3rem;
+    }
+
+    .carousel-caption{
+        padding-left: 100px;
+    }
+
+    // .carousel-caption .caption-inner::before {
+    //     content: "01/" !important;
+    //     position: absolute;
+    //     left: 0%;
+    //     top: 0;
+    //     font-size: 16px;
+    //     display: block;
+    // }
+
+    .number{
+        display: block;
+    }
+
+    .carousel-caption .caption-content{
+        margin-left: 20px;
+    }
+
+    .carousel-caption .caption-content .line h2{
+        font-size: 42px;
+        line-height: 42px;
     }
 }

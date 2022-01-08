@@ -4,7 +4,7 @@
     flex-direction: row;
     margin-top: 50px;
     margin-bottom: 120px;
-    width: 200px;
+    width: 260px;
 }
 
 .dash{
@@ -20,24 +20,29 @@
 }
 
 .dark-link{
+    border: 1px solid black;
     text-decoration: none;
+    text-align: center;
+    padding: 7px 50px;
     color: #666;
+    width: 100%;
     font-size: 16px;
     line-height: 2;
     display: inline-flex;
-    padding-left: 70px;
     transition: all 0.2s;
     font-weight: 700;
+    display: flex;
+    justify-content: center;
 }
 
 .dark-link__parent:hover .dash{
-    width: 70px;
-    transition: all 0.2s;
+    // width: 70px;
+    // transition: all 0.2s;
     background: #666;
 }
 
 .dark-link__parent:hover .dark-link{
-    padding-left: 90px;
+    // padding-left: 90px;
     transition: all 0.2s;
     color: #f60;
     font-weight: 700;

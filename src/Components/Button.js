@@ -5,7 +5,7 @@ function Button() {
     return (
         <div className="main-btn">
             <div className="dark-link__parent">
-                <span className="dash"></span>
+                {/* <span className="dash"></span> */}
                 <a href="/" className="dark-link">Start a Project</a>
             </div>
         </div>
