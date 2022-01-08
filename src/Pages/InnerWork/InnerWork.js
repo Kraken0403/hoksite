@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Header from '../../Components/Header'
 import SmallWrapper from '../../Components/SmallWrapper'
 import './InnerWork.scss'
-import sample from '../../images/sample-1.jpg'
+
 import $ from 'jquery';
 import Footer from '../../Components/Footer'
 import gsap from 'gsap';
